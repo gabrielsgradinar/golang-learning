@@ -1,4 +1,4 @@
-package main
+package cards
 
 func main() {
 	cards := newDeck()

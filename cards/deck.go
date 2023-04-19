@@ -1,8 +1,7 @@
-package main
+package cards
 
 import (
 	"fmt"
-	"io/ioutil"
 	"math/rand"
 	"os"
 	"strings"
@@ -44,11 +43,11 @@ func (d deck) toString() string {
 }
 
 func (d deck) saveToFile(filename string) error {
-	return ioutil.WriteFile(filename, []byte(d.toString()), 0666)
+	return os.WriteFile(filename, []byte(d.toString()), 0666)
 }
 
 func newDeckFromFile(filename string) deck {
-	bs, err := ioutil.ReadFile(filename)
+	bs, err := os.ReadFile(filename)
 	if err != nil {
 		fmt.Println("Error:", err)
 		os.Exit(1)
