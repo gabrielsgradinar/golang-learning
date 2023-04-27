@@ -10,3 +10,6 @@ Leraning Go with [The Go Programming Language](https://www.amazon.com.br/Go-Prog
 
 - Value types
     - uso de ponteiros (pointers) para fazer a mudanças dentro de uma função
+
+- Interfaces
+    - São implicitos, não é definido que outros tipos seguem o contrato de uma Interface
