@@ -13,3 +13,7 @@ Leraning Go with [The Go Programming Language](https://www.amazon.com.br/Go-Prog
 
 - Interfaces
     - São implicitos, não é definido que outros tipos seguem o contrato de uma Interface
+
+- Go Routines
+    - O comando `go funcao()` cria as routines
+    - `channels` são usados para comunicação entre diferentes Go Routines
