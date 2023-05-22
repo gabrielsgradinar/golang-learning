@@ -1,36 +1,38 @@
 package main
 
 import (
-	"io/ioutil"
+	"bufio"
 	"log"
 	"os"
 )
 
 func main() {
-	file, err := os.OpenFile(
-		"test.txt",
-		os.O_WRONLY|os.O_TRUNC|os.O_CREATE,
-		0644,
-	)
-
+	file, err := os.OpenFile("my_file.txt", os.O_WRONLY|os.O_CREATE, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	defer file.Close()
 
-	byteSlice := []byte("I learn Golang!")
-	bytesWritten, err := file.Write(byteSlice)
-
+	bufferedWriter := bufio.NewWriter(file)
+	bs := []byte{97, 98, 99}
+	bytesWritten, err := bufferedWriter.Write(bs)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Bytes Written? %d\n", bytesWritten)
+	log.Printf("Bytes written to buffer (not file) %d\n", bytesWritten)
 
-	bs := []byte("Go Programming is top!")
-	err = ioutil.WriteFile("opa.txt", bs, 0644)
+	bytesAvailable := bufferedWriter.Available()
+	log.Printf("Bytes available in buffer : %d\n", bytesAvailable)
+
+	bytesWritten, err = bufferedWriter.WriteString("\nJust a random string")
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	unflushedBufferSize := bufferedWriter.Buffered()
+	log.Printf("Bytes buffered : %d\n", unflushedBufferSize)
+
+	bufferedWriter.Flush()
 
 }
