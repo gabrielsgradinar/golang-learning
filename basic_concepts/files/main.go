@@ -1,38 +1,47 @@
 package main
 
 import (
-	"bufio"
+	"fmt"
+	"io"
+	"io/ioutil"
 	"log"
 	"os"
 )
 
 func main() {
-	file, err := os.OpenFile("my_file.txt", os.O_WRONLY|os.O_CREATE, 0644)
+	file, err := os.Open("test.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	defer file.Close()
 
-	bufferedWriter := bufio.NewWriter(file)
-	bs := []byte{97, 98, 99}
-	bytesWritten, err := bufferedWriter.Write(bs)
+	byteSlice := make([]byte, 2)
+
+	numberBytesRead, err := io.ReadFull(file, byteSlice)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Bytes written to buffer (not file) %d\n", bytesWritten)
+	fmt.Printf("Number of bytes read: %d\n", numberBytesRead)
+	fmt.Printf("Data read: %s\n", byteSlice)
 
-	bytesAvailable := bufferedWriter.Available()
-	log.Printf("Bytes available in buffer : %d\n", bytesAvailable)
-
-	bytesWritten, err = bufferedWriter.WriteString("\nJust a random string")
+	file, err = os.Open("test.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer file.Close()
 
-	unflushedBufferSize := bufferedWriter.Buffered()
-	log.Printf("Bytes buffered : %d\n", unflushedBufferSize)
+	data, err := ioutil.ReadAll(file)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("Data as string: %s\n", data)
+	fmt.Printf("Number of bytes read: %d\n", len(data))
 
-	bufferedWriter.Flush()
+	data, err = ioutil.ReadFile("test.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("Data read: %s\n", data)
 
 }
