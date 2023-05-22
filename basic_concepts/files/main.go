@@ -8,34 +8,28 @@ import (
 )
 
 func main() {
-	file, err := os.Open("test.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
+	scanner := bufio.NewScanner(os.Stdin)
 
-	defer file.Close()
+	fmt.Printf("%T\n", scanner)
 
-	scanner := bufio.NewScanner(file)
+	scanner.Scan()
 
-	scanner.Split(bufio.ScanWords)
+	text := scanner.Text()
 
-	success := scanner.Scan()
-	if success == false {
-		err = scanner.Err()
-		if err == nil {
-			log.Println("Scan was completed and it reached EOF")
-		} else {
-			log.Fatal(err)
-		}
-	}
+	bytes := scanner.Bytes()
 
-	fmt.Println("First line found:", scanner.Text())
+	fmt.Println("Input text:", text)
+	fmt.Println("Input bytes:", bytes)
 
 	for scanner.Scan() {
-		fmt.Println(scanner.Text())
+		text = scanner.Text()
+		fmt.Println("You entered:", text)
+		if text == "exit" {
+			fmt.Println("Exiting the scanning ...")
+			break
+		}
 	}
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
 	}
-
 }
