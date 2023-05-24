@@ -8,8 +8,7 @@ type contactInfo struct {
 }
 
 type person struct {
-	firstName string
-	lastName  string
+	firstName, lastName string
 	contactInfo
 }
 
@@ -27,6 +26,17 @@ func main() {
 	}
 	julia.updateName("Xulia")
 	julia.print()
+
+	tiago := struct { // anonymous struct
+		firstName, lastName string
+		age                 int
+	}{
+		firstName: "Tiago",
+		lastName:  "Grandinar",
+		age:       14,
+	}
+
+	fmt.Printf("%#v\n", tiago)
 
 }
 
