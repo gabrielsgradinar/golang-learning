@@ -1,9 +1,0 @@
-go 1.21.5
-
-use (
-	./banco_de_dados/1
-	./banco_de_dados/2
-	./fundacao/1
-	./fundacao/18
-	./fundacao/20
-)
