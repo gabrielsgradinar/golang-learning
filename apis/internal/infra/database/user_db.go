@@ -5,9 +5,7 @@ import (
 	"gorm.io/gorm"
 )
 
-
-
-type User struct{
+type User struct {
 	DB *gorm.DB
 }
 
@@ -15,12 +13,11 @@ func NewUser(db *gorm.DB) *User {
 	return &User{DB: db}
 }
 
-func (u *User)Create(user *entity.User) error {
+func (u *User) Create(user *entity.User) error {
 	return u.DB.Create(user).Error
 }
 
-
-func (u *User)FindByEmail(email string)(*entity.User, error){
+func (u *User) FindByEmail(email string) (*entity.User, error) {
 	var user entity.User
 
 	if err := u.DB.Where("email = $1", email).First(&user).Error; err != nil {

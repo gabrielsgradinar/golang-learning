@@ -17,10 +17,10 @@ type conf struct {
 	WebServerPort string `mapstructure:"WEB_SERVER_PORT"`
 	JWTSecret     string `mapstructure:"JWT_SECRET"`
 	JWTExpiresIn  string `mapstructure:"JWT_EXPIRES_IN"`
-	TokenAuth	  *jwtauth.JWTAuth
-} 
+	TokenAuth     *jwtauth.JWTAuth
+}
 
-func LoadConfig(path string)(*conf, error){
+func LoadConfig(path string) (*conf, error) {
 	viper.SetConfigName("app_config")
 	viper.SetConfigType("env")
 	viper.AddConfigPath(path)
