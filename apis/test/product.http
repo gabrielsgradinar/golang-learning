@@ -5,3 +5,9 @@ Content-Type: application/json
     "name": "My Product",
     "price": 100
 }
+
+
+###
+
+
+GET http://localhost:8000/products/81e77f3d-6ad3-4424-b4af-eb00d6269c8f

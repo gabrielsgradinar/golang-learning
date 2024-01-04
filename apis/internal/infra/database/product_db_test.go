@@ -18,7 +18,7 @@ func TestCreateNewProduct(t *testing.T) {
 	}
 	db.AutoMigrate(&entity.Product{})
 
-	product, err:= entity.NewProduct("Product 1", 10.00)
+	product, err := entity.NewProduct("Product 1", 10.00)
 	assert.NoError(t, err)
 
 	productDB := NewProduct(db)
@@ -27,14 +27,14 @@ func TestCreateNewProduct(t *testing.T) {
 	assert.NotEmpty(t, product.ID)
 }
 
-func TestFindAllProducts(t *testing.T){
+func TestFindAllProducts(t *testing.T) {
 	db, err := gorm.Open(sqlite.Open("file::memory:"), &gorm.Config{})
 	if err != nil {
 		t.Error(err)
 	}
 	db.AutoMigrate(&entity.Product{})
-	for i := 1; i < 24; i++{
-		product, err:= entity.NewProduct(fmt.Sprintf("Product %d", i), rand.Float64()*100)
+	for i := 1; i < 24; i++ {
+		product, err := entity.NewProduct(fmt.Sprintf("Product %d", i), rand.Float64()*100)
 		assert.NoError(t, err)
 		db.Create(product)
 	}
@@ -66,7 +66,7 @@ func TestFindProductByID(t *testing.T) {
 		t.Error(err)
 	}
 	db.AutoMigrate(&entity.Product{})
-	product, err:= entity.NewProduct("Product 1", 10.00)
+	product, err := entity.NewProduct("Product 1", 10.00)
 	assert.NoError(t, err)
 	db.Create(product)
 
@@ -77,13 +77,13 @@ func TestFindProductByID(t *testing.T) {
 
 }
 
-func TestUpdateProducy(t *testing.T){
+func TestUpdateProducy(t *testing.T) {
 	db, err := gorm.Open(sqlite.Open("file::memory:"), &gorm.Config{})
 	if err != nil {
 		t.Error(err)
 	}
 	db.AutoMigrate(&entity.Product{})
-	product, err:= entity.NewProduct("Product 1", 10.00)
+	product, err := entity.NewProduct("Product 1", 10.00)
 	assert.NoError(t, err)
 	db.Create(product)
 	productDB := NewProduct(db)
@@ -96,13 +96,13 @@ func TestUpdateProducy(t *testing.T){
 
 }
 
-func TestDeleteProduct(t *testing.T){
+func TestDeleteProduct(t *testing.T) {
 	db, err := gorm.Open(sqlite.Open("file::memory:"), &gorm.Config{})
 	if err != nil {
 		t.Error(err)
 	}
 	db.AutoMigrate(&entity.Product{})
-	product, err:= entity.NewProduct("Product 1", 10.00)
+	product, err := entity.NewProduct("Product 1", 10.00)
 	assert.NoError(t, err)
 	db.Create(product)
 	productDB := NewProduct(db)
