@@ -10,13 +10,13 @@ Content-Type: application/json
 ###
 
 
-GET http://localhost:8000/products/0c40ce1d-3592-4486-a0d8-f8d06c2a4db9
+GET http://localhost:8000/products/964b4de7-4198-4e8a-9bac-7ece069aef72
 
 
 ###
 
 
-PUT http://localhost:8000/products/0c40ce1d-3592-4486-a0d8-f8d06c2a4db9	
+PUT http://localhost:8000/products/964b4de7-4198-4e8a-9bac-7ece069aef72
 Content-Type: application/json
 
 {
