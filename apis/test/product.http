@@ -10,4 +10,29 @@ Content-Type: application/json
 ###
 
 
-GET http://localhost:8000/products/81e77f3d-6ad3-4424-b4af-eb00d6269c8f
+GET http://localhost:8000/products/0c40ce1d-3592-4486-a0d8-f8d06c2a4db9
+
+
+###
+
+
+PUT http://localhost:8000/products/0c40ce1d-3592-4486-a0d8-f8d06c2a4db9	
+Content-Type: application/json
+
+{
+    "name": "My Product V2",
+    "price": 150
+}
+
+
+###
+
+
+DELETE  http://localhost:8000/products/0c40ce1d-3592-4486-a0d8-f8d06c2a4db9	
+
+
+###
+
+
+
+GET http://localhost:8000/products?limit=6&page=1&sort=desc
