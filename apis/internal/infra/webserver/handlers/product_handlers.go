@@ -126,6 +126,20 @@ func (h ProductHandler) GetProduct(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// Update Product godoc
+// @Summary      Update a product
+// @Description  Update a product
+// @Tags         products
+// @Accept       json
+// @Produce      json
+// @Param        id        path     string  true  "product identifier" Format(uuid)
+// @Param        request   body     dto.CreateProductInput  true  "product request"
+// @Success      200       {object}   entity.Product
+// @Failure      400       {object}  Error
+// @Failure      404       {object}  Error
+// @Failure      500       {object}  Error
+// @Router       /products/{id} [put]
+// @Security ApiKeyAuth
 func (h ProductHandler) UpdateProduct(w http.ResponseWriter, r *http.Request) {
 	id := chi.URLParam(r, "id")
 
@@ -157,6 +171,20 @@ func (h ProductHandler) UpdateProduct(w http.ResponseWriter, r *http.Request) {
 
 }
 
+
+// Delete Product godoc
+// @Summary      Delete a product
+// @Description  Delete a product
+// @Tags         products
+// @Accept       json
+// @Produce      json
+// @Param        id        path     string  true  "product identifier" Format(uuid)
+// @Success      200       {object}   entity.Product
+// @Failure      400       {object}  Error
+// @Failure      404       {object}  Error
+// @Failure      500       {object}  Error
+// @Router       /products/{id} [delete]
+// @Security ApiKeyAuth
 func (h ProductHandler) DeleteProduct(w http.ResponseWriter, r *http.Request) {
 	id := chi.URLParam(r, "id")
 	if id == "" {
