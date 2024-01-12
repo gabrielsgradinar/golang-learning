@@ -17,3 +17,14 @@
 - fuzzing - testes de mutação
 - go test -fuzz=. -run=^#
 - go test -fuzz=. -fuzztime=10s -run=^#
+
+
+# Go Routines
+
+- `go` + nome_da_funcão
+- rodar simultâneamente diversas tarefas
+- se o programa acaba, as threads que estão executando são finalizadas
+- `wait groups`
+    - adicionar quantidade de tarefas / operações
+    - informar que você terminou uma operação
+    - esperar até que as operações sejam finalizadas
