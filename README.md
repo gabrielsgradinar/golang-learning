@@ -28,3 +28,6 @@
     - adicionar quantidade de tarefas / operações
     - informar que você terminou uma operação
     - esperar até que as operações sejam finalizadas
+- `channel`
+    - faz comunicação entre threads
+    - segurança para uma thread saber o momento em que pode trabalhar com um determinado dado
